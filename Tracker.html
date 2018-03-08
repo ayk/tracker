@@ -1,0 +1,109 @@
+<html>
+	<head>
+		<style>
+			body {
+			  font-family: "Arial", Times, serif;
+			}
+
+			.board div:hover {background: yellow; cursor: pointer;}
+
+			div.number {
+			  float:left;
+			  width: 30px;
+			  line-height: 30px;
+			  text-align: center;
+			  cursor: pointer;
+			  
+			  -webkit-user-select: none;  
+			  -moz-user-select: none;    
+			  -ms-user-select: none;      
+			  user-select: none;
+			}
+
+			div.number2 {
+			  float:left;
+			  width: 20px;
+			  line-height: 20px;
+			  text-align: center;
+			}
+
+			.color {
+			  font-size: 10px;
+			}
+
+			.color0 {
+			  background-color: #ff8888;
+			}
+
+			.color1 {
+			  background-color: #ffef1c;
+			}
+
+			.color2 {
+			  background-color: #a6f72c;
+			}
+
+			.color3 {
+			  background-color: #f996ff;
+			}
+
+			.color4 {
+			  background-color: #ffcd8c;
+			}
+
+			.color5 {
+			  background-color: #8cbbff;
+			}
+			
+		</style>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var counter = 1;
+
+				$(".board").append("<div class=\"number\" style=\"float:left; width: 30px; height: 90px; text-align: center; line-height: 100px;\">0<div>");
+
+				for($i=3; $i<=36; $i=$i+3){
+					$(".board").append("<div class=\"number\">" + $i + "</div>");
+				}
+
+				for($i=2; $i<=35; $i=$i+3){
+					$(".board").append("<div class=\"number\">" + $i + "</div>");
+				}
+
+				for($i=1; $i<=34; $i=$i+3){
+					$(".board").append("<div class=\"number\">" + $i + "</div>");
+				}
+
+				$(".board").append("<br style=\"clear: both\">");
+
+				$("div.number").click(function() {
+					color = "color" + Math.floor(counter/37);
+					$("#num" + $(this).text()).append("<div class=\"color " + color +"\">" + counter + "</div>");
+					counter++;
+				});
+
+
+				$(".tabelle").append("<div id=\"hits\" class=\"number2\"></div>");
+				$("#hits").append("<div>&nbsp;</div>");
+
+				for($i=1; $i<=15; $i++){
+					$("#hits").append("<div>" + $i + "</div>");
+				}
+
+				for($i=0; $i<=36; $i++){
+					$(".tabelle").append("<div class=\"number2\" id=\"num" + $i + "\">" + $i + "</div>");
+				}
+
+				$(".tabelle").append("<br style=\"clear: both\">");
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div class="board" style="margin: 20px auto; border: 1px solid green; width: 390px"></div>
+		<div class="tabelle" style="margin: 20px auto; border: 1px solid red; width: 760px"></div>
+	</body>
+</html>
