@@ -81,7 +81,7 @@
 				$(".board").append("<br style=\"clear: both\">");
 
 				$("div.number").click(function() {
-					color = "color" + Math.floor(counter/37);
+					color = "color" + Math.floor((counter-1)/37);
 					$("#num" + $(this).text()).append("<div class=\"color " + color +"\">" + counter + "</div>");
 					counter++;
 				});
