@@ -1,0 +1,152 @@
+<html>
+	<head>
+		<style>
+			body {
+			  font-family: "Arial", Times, serif;
+			}
+
+			.board {
+			  background: #3cc619;
+			}
+
+			.board div:hover {font-weight: bold; background: yellow; cursor: pointer; color: black}
+
+			.tabelle {
+				background-size: 21px 21px;
+				background-image: -webkit-linear-gradient(left, grey 1px, transparent 1px), -webkit-linear-gradient(grey 1px, transparent 1px);
+				background-image: -moz-linear-gradient(left, grey 1px, transparent 1px), -moz-linear-gradient(grey 1px, transparent 1px);
+				background-image: -o-linear-gradient(left, grey 1px, transparent 1px), -o-linear-gradient(grey 1px, transparent 1px);
+				background-image: linear-gradient(to right, grey 1px, transparent 1px), linear-gradient(grey 1px, transparent 1px);
+			}
+
+			.red {
+			  background: red;
+			  color: white;
+			}
+
+			.black {
+			  background: black;
+			  color: white;
+			}
+
+			.green {
+			  background: green;
+			  color: white;
+			}
+
+			div.number {
+			  float:left;
+			  width: 30px;
+			  margin-left:1px;
+			  margin-top:1px;
+			  line-height: 30px;
+			  text-align: center;
+			  cursor: pointer;
+			  
+			  -webkit-user-select: none;  
+			  -moz-user-select: none;    
+			  -ms-user-select: none;      
+			  user-select: none;
+			}
+
+			div.number2 {
+			  float:left;
+			  width: 20px;
+			  margin-left:1px;
+			  margin-top:1px;
+			  line-height: 20px;
+			  text-align: center;
+			  font-size: 12px;
+			  font-weight: bold;
+			}
+
+			.color {
+			  width: 20px;
+			  line-height: 20px;
+			  margin-top:1px;
+			  font-size: 10px;
+			}
+
+			.color0 {
+			  background-color: #ff8888;
+			}
+
+			.color1 {
+			  background-color: #ffef1c;
+			}
+
+			.color2 {
+			  background-color: #a6f72c;
+			}
+
+			.color3 {
+			  background-color: #f996ff;
+			}
+
+			.color4 {
+			  background-color: #ffcd8c;
+			}
+
+			.color5 {
+			  background-color: #8cbbff;
+			}
+		</style>
+	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var counter = 1
+				var rednums = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36]
+				var color
+
+
+				$(".board").append("<div class=\"number green\" style=\"float:left; width: 30px; height: 92px; text-align: center; line-height: 100px;\">0<div>");
+
+				for($i=3; $i<=36; $i=$i+3){
+					color = rednums.indexOf($i) == -1 ? "black" : "red";
+					$(".board").append("<div class=\"number " + color + "\">" + $i + "</div>");
+				}
+
+				for($i=2; $i<=35; $i=$i+3){
+					color = rednums.indexOf($i) == -1 ? "black" : "red";
+					$(".board").append("<div class=\"number " + color + "\">" + $i + "</div>");
+				}
+
+				for($i=1; $i<=34; $i=$i+3){
+					color = rednums.indexOf($i) == -1 ? "black" : "red";
+					$(".board").append("<div class=\"number " + color + "\">" + $i + "</div>");
+				}
+
+				$(".board").append("<br style=\"clear: both\">")
+
+				$("div.number").click(function() {
+					color = "color" + Math.floor((counter-1)/37);
+				  $("#num" + $(this).text()).append("<div class=\"color " + color +"\">" + counter + "</div>");
+				  counter++
+				});
+
+
+				$(".tabelle").append("<div id=\"hits\" class=\"number2\"></div>");
+				$("#hits").append("<div>&nbsp;</div>");
+
+				for($i=1; $i<=15; $i++){
+					$("#hits").append("<div class=\"number2\">" + $i + "</div>");
+				}
+				$("#hits").append("<div>...</div>");
+
+				for($i=0; $i<=36; $i++){
+					$(".tabelle").append("<div class=\"number2\" id=\"num" + $i + "\">" + $i + "</div>");
+				}
+
+				$(".tabelle").append("<br style=\"clear: both\">")
+
+			});
+		</script>
+		
+	</head>
+	<body>
+		<div class="board" style="margin: 20px auto; border: 1px solid #3cc619; border-width: 0px 1px 1px 0px; width: 403px"></div>
+		<div class="tabelle" style="margin: 20px auto; border: 1px solid grey; border-width: 0px 1px 1px 0px; width: 798px"></div>
+	</body>
+</html>
